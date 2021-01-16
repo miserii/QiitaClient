@@ -73,8 +73,7 @@
 		4690028C25B28DC800039821 /* QiitaClient */ = {
 			isa = PBXGroup;
 			children = (
-				4690028D25B28DC800039821 /* AppDelegate.swift */,
-				4690028F25B28DC800039821 /* SceneDelegate.swift */,
+				469002BD25B2A06E00039821 /* App */,
 				469002AB25B293F300039821 /* List */,
 				4690029625B28DCA00039821 /* Assets.xcassets */,
 				4690029825B28DCA00039821 /* LaunchScreen.storyboard */,
@@ -103,6 +102,15 @@
 				469002AF25B295CF00039821 /* QiitaListTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		469002BD25B2A06E00039821 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4690028F25B28DC800039821 /* SceneDelegate.swift */,
+				4690028D25B28DC800039821 /* AppDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		80D9E1C03DFB7BC8A0F643E7 /* Frameworks */ = {
