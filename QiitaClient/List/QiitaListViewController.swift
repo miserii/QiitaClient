@@ -15,6 +15,8 @@ final class QiitaListViewController: UIViewController {
     }
 
     private let qiitaViewModel = QiitaViewModel()
+//    後で消す
+    private let qiitaModel = QiitaModel()
     private let disposeBag = DisposeBag()
     fileprivate var articles: [Article] = []
 
@@ -29,14 +31,20 @@ final class QiitaListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     private func addRxObserver() {
-        qiitaViewModel.fetchArticle(completion: { (articles) in
+//        多分ここで.subscrieからのonNextする
+        qiitaModel.fetchArticle(completion: { (articles) in
             self.articles = articles
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         })
+//        viewModel.reloadData
+//            .subscrie(onNext: { [weak self] _ in
+//                self?.tableView.reloadData()
+//            })
+//            .disposed(by: disposeBag)
     }
 
 }

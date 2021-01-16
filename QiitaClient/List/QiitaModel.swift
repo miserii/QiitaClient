@@ -8,6 +8,7 @@
 import Foundation
 
 final class QiitaModel {
+//    ここの処理をRxにするのわからん、、
 
     func fetchArticle(completion: @escaping ([Article]) -> Void) {
 
