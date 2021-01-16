@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class QiitaListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
