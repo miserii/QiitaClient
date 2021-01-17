@@ -7,6 +7,8 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
+import RxOptional
 
 final class QiitaListViewController: UIViewController {
 
@@ -14,11 +16,10 @@ final class QiitaListViewController: UIViewController {
         static let cellHeight: CGFloat = 75
     }
 
-    private let qiitaViewModel = QiitaViewModel()
-//    後で消す
-    private let qiitaModel = QiitaModel()
     private let disposeBag = DisposeBag()
-    fileprivate var articles: [Article] = []
+    private let viewModel = QiitaViewModel()
+    private lazy var output: QiitaViewModelOutput = viewModel
+
 
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
@@ -27,32 +28,30 @@ final class QiitaListViewController: UIViewController {
             tableView.delegate = self
         }
     }
-
+    //        この中で必要なストリームを決める
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    private func addRxObserver() {
-//        多分ここで.subscrieからのonNextする
-        qiitaModel.fetchArticle(completion: { (articles) in
-            self.articles = articles
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
-//        viewModel.reloadData
-//            .subscrie(onNext: { [weak self] _ in
-//                self?.tableView.reloadData()
-//            })
-//            .disposed(by: disposeBag)
+        //        inputとoutputのストリームを決める
+//        bindInputStream()
+        bindOutputStream()
     }
 
+    //viewModelの中に流すストリーム
+//    private func bindInputStream() {}
+    //viewModelからくるストリーム
+    private func bindOutputStream() {
+        //outputのmodelsに変化があったというストリームが流れてきたらtableViewを更新
+        output.changeModelsObservable.subscribeOn(MainScheduler.instance).subscribe(onNext: {
+            self.tableView.reloadData()
+        }).disposed(by: disposeBag)
+    }
 }
 
 extension QiitaListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articles.count
+//        return output.models.count
+        return 20
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -60,10 +59,12 @@ extension QiitaListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard
+//        let qiitaModel = output.models[indexPath.item],
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? QiitaListTableViewCell
+            //        else { return UITableViewCell() }
+            //        cell.configure(qiitaModel: qiitaModel)
         let cell = tableView.dequeueReusableCell(withIdentifier: "QiitaListTableViewCell", for: indexPath) as! QiitaListTableViewCell
-        let article = articles[indexPath.row]
-        cell.title?.text = article.title
-        cell.userName?.text = article.user.name
 
         return cell
     }

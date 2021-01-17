@@ -1,16 +1,37 @@
 PODS:
-  - RxSwift (6.0.0)
+  - "NSObject+Rx (5.1.0)":
+    - RxSwift (~> 5.1)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxOptional (4.1.0):
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
 
 DEPENDENCIES:
+  - "NSObject+Rx"
+  - RxCocoa
+  - RxOptional
   - RxSwift
 
 SPEC REPOS:
   trunk:
+    - "NSObject+Rx"
+    - RxCocoa
+    - RxOptional
+    - RxRelay
     - RxSwift
 
 SPEC CHECKSUMS:
-  RxSwift: c14e798c59b9f6e9a2df8fd235602e85cc044295
+  "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxOptional: b1fcd60856807a564c0215c2184b8d33e7826dc2
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: 072362b485ddcb397d81bbe60f117822dcdc47d9
+PODFILE CHECKSUM: 5ddcfa0bcd0f2b970b19dfc75eedae6c1fc68eb4
 
 COCOAPODS: 1.9.3
