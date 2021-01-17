@@ -8,10 +8,6 @@
 
 import Foundation
 
-//struct QiitaResponse: Codable {
-//  let items: [QiitaModel]?
-//}
-
 struct QiitaModel: Codable {
     var title: String
     var user: User
