@@ -13,5 +13,8 @@ struct QiitaModel: Codable {
     var user: User
     struct User: Codable {
         var name: String
+//        var profileImageUrl: String
     }
 }
+
+
