@@ -34,7 +34,7 @@ final class QiitaAPI {
     }
 }
 
-//自作のGithubAPIクラスのfunctionをRx対応させる
+//自作のQiitaAPIクラスのfunctionをRx対応させる
 extension QiitaAPI: ReactiveCompatible {}
 extension Reactive where Base: QiitaAPI {
   func fetchArticle(completion: ([QiitaModel]) -> Void) -> Observable<[QiitaModel]> {
