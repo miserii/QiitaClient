@@ -13,7 +13,7 @@ final class QiitaAPI {
 
     private init() {}
 
-    func fetchArticle(completion: @escaping ([QiitaModel]) -> Void) {
+    func fetchArticle(success: @escaping ([QiitaModel]) -> Void) {
         let url = "https://qiita.com/api/v2/items"
         guard var urlComponents = URLComponents(string: url) else { return }
 
@@ -25,7 +25,7 @@ final class QiitaAPI {
             guard let jsonData = data else { return }
             do {
                 let articles = try JSONDecoder().decode([QiitaModel].self, from: jsonData)
-                completion(articles)
+                success(articles)
             } catch {
                 print(error.localizedDescription)
             }
@@ -34,13 +34,13 @@ final class QiitaAPI {
     }
 }
 
-//自作のQiitaAPIクラスのfunctionをRx対応させる
+//QiitaAPIクラスのfunctionをRx対応させる
 extension QiitaAPI: ReactiveCompatible {}
 extension Reactive where Base: QiitaAPI {
   func fetchArticle(completion: ([QiitaModel]) -> Void) -> Observable<[QiitaModel]> {
     return Observable.create { observer in
-        QiitaAPI.shared.fetchArticle(completion: { (models) in
-//            APIをたたけたときにmodelsに入れて購読させてる多分
+        QiitaAPI.shared.fetchArticle(success: { (models) in
+//            succesだったらmodelsに入れて購読させる多分
             observer.on(.next(models))
         })
       return Disposables.create()
