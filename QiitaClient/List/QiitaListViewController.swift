@@ -8,7 +8,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import RxOptional
 
 final class QiitaListViewController: UIViewController {
 
@@ -31,13 +30,10 @@ final class QiitaListViewController: UIViewController {
     //        この中で必要なストリームを決める
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        inputとoutputのストリームを決める
-//        bindInputStream()
+        //        outputのストリームを決める
         bindOutputStream()
     }
 
-    //viewModelの中に流すストリーム
-//    private func bindInputStream() {}
     //viewModelからくるストリーム
     private func bindOutputStream() {
         //outputのmodelsに変化があったというストリームが流れてきたらtableViewを更新
@@ -50,8 +46,7 @@ final class QiitaListViewController: UIViewController {
 extension QiitaListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return output.models.count
-        return 20
+        return output.models.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -59,15 +54,13 @@ extension QiitaListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard
-//        let qiitaModel = output.models[indexPath.item],
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? QiitaListTableViewCell
-            //        else { return UITableViewCell() }
-            //        cell.configure(qiitaModel: qiitaModel)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "QiitaListTableViewCell", for: indexPath) as! QiitaListTableViewCell
+        guard
+            let qiitaModel = output.models[safe: indexPath.item],
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? QiitaListTableViewCell
+        else { return UITableViewCell() }
+        cell.configure(qiitaModel: qiitaModel)
 
         return cell
     }
+
 }
-
-
