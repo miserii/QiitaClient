@@ -27,10 +27,9 @@ final class QiitaViewModel:  QiitaViewModelOutput {
 
     //    initで初期化するときにストリームを決める
     init() {
-        Observable.flatMapLatest({ (completion) -> Observable<[QiitaModel]> in
-            QiitaAPI.shared.rx.fetchArticle(completion: {models in
-                print(models)
-            })
+        QiitaAPI.shared.rx.fetchArticle(completion: {models in
+            //            print呼ばれてない
+            print(models)
         }).map {[weak self] (models) -> Void in
             //最後に得たデータを保存
             self?.models = models
