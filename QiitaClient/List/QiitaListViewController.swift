@@ -12,7 +12,7 @@ import RxCocoa
 final class QiitaListViewController: UIViewController {
 
     enum Const {
-        static let cellHeight: CGFloat = 75
+        static let cellHeight: CGFloat = 90
     }
 
     private let disposeBag = DisposeBag()
@@ -38,7 +38,9 @@ final class QiitaListViewController: UIViewController {
     private func bindOutputStream() {
         //outputのmodelsに変化があったというストリームが流れてきたらtableViewを更新
         output.changeModelsObservable.subscribeOn(MainScheduler.instance).subscribe(onNext: {
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }).disposed(by: disposeBag)
     }
 }
@@ -56,11 +58,15 @@ extension QiitaListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let qiitaModel = output.models[safe: indexPath.item],
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? QiitaListTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "QiitaListTableViewCell", for: indexPath) as? QiitaListTableViewCell
         else { return UITableViewCell() }
         cell.configure(qiitaModel: qiitaModel)
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        webViewにせんいするようにする
     }
 
 }
