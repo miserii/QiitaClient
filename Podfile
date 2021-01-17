@@ -9,7 +9,5 @@ target 'QiitaClient' do
 
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'NSObject+Rx'
-  pod 'RxOptional'
 
 end

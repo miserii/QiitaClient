@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Qiita List View Controller-->
+        <!--Qiita-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="QiitaListViewController" customModule="QiitaClient" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                             <constraint firstItem="O0i-o4-jfd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pvX-dv-6WR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="otK-Ji-wak"/>
+                    <navigationItem key="navigationItem" title="Qiita" id="otK-Ji-wak"/>
                     <connections>
                         <outlet property="tableView" destination="O0i-o4-jfd" id="gSa-qz-Kan"/>
                     </connections>
