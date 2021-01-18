@@ -37,13 +37,14 @@ final class QiitaAPI {
 //QiitaAPIクラスのfunctionをRx対応させる
 extension QiitaAPI: ReactiveCompatible {}
 extension Reactive where Base: QiitaAPI {
-  func fetchArticle(completion: ([QiitaModel]) -> Void) -> Observable<[QiitaModel]> {
-    return Observable.create { observer in
-        QiitaAPI.shared.fetchArticle(success: { (models) in
-//            succesだったらmodelsに入れて購読させる多分
-            observer.on(.next(models))
-        })
-      return Disposables.create()
-    }.share()
-  }
+    var fetchArticle: Observable<[QiitaModel]> {
+        return Observable.create { observer in
+            QiitaAPI.shared.fetchArticle(success: { (models) in
+                //            succesだったらmodelsに入れて購読させる多分
+                observer.on(.next(models))
+            })
+            return Disposables.create()
+        }
+        .share()
+    }
 }

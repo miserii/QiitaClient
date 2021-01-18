@@ -15,10 +15,10 @@ final class QiitaListViewController: UIViewController {
         static let cellHeight: CGFloat = 90
     }
 
-    private let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     private let viewModel = QiitaViewModel()
+    private lazy var input: QiitaViewModelInput = viewModel
     private lazy var output: QiitaViewModelOutput = viewModel
-
 
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
@@ -35,11 +35,15 @@ final class QiitaListViewController: UIViewController {
     }
 
     //viewModelからくるストリーム
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.qiitaArticleObserver.onNext(())
+    }
     private func bindOutputStream() {
         //outputのmodelsに変化があったというストリームが流れてきたらtableViewを更新
         output.changeModelsObservable
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] in
+            .subscribe(onNext: { [weak self] _ in
                 self?.tableView.reloadData()
             })
             .disposed(by: disposeBag)
