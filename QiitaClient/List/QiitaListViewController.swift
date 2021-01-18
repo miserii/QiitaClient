@@ -37,11 +37,12 @@ final class QiitaListViewController: UIViewController {
     //viewModelからくるストリーム
     private func bindOutputStream() {
         //outputのmodelsに変化があったというストリームが流れてきたらtableViewを更新
-        output.changeModelsObservable.subscribeOn(MainScheduler.instance).subscribe(onNext: {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }).disposed(by: disposeBag)
+        output.changeModelsObservable
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                self?.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
