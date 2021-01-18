@@ -8,5 +8,6 @@ target 'QiitaClient' do
   # Pods for QiitaClient
 
   pod 'RxSwift'
+  pod 'RxCocoa'
 
 end
