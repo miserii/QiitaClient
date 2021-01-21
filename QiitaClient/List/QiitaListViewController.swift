@@ -27,6 +27,11 @@ final class QiitaListViewController: UIViewController {
             tableView.delegate = self
         }
     }
+
+    @IBAction private func magnify(_ sender: Any) {
+        let searchVC = searchViewController()
+        self.navigationController?.pushViewController(searchVC, animated: true)
+    }
     //        この中で必要なストリームを決める
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +73,7 @@ extension QiitaListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        webViewにせんいするようにする
+
     }
 
 }
