@@ -22,6 +22,13 @@
 		469002BB25B2965100039821 /* QiitaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469002BA25B2965100039821 /* QiitaModel.swift */; };
 		469002F425B3379E00039821 /* QiitaWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469002F325B3379E00039821 /* QiitaWebViewController.swift */; };
 		469002F825B337F100039821 /* QiitaWebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469002F725B337F100039821 /* QiitaWebView.storyboard */; };
+		E81477C625B7BC5F000E6ACD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81477C525B7BC5F000E6ACD /* SearchViewController.swift */; };
+		E81477CA25B7BC71000E6ACD /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E81477C925B7BC71000E6ACD /* Search.storyboard */; };
+		E81477D725B7BE56000E6ACD /* searchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81477D625B7BE56000E6ACD /* searchModel.swift */; };
+		E81477DA25B7BE6A000E6ACD /* searchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81477D925B7BE6A000E6ACD /* searchViewModel.swift */; };
+		E81477E025B7BEB0000E6ACD /* searchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81477DE25B7BEB0000E6ACD /* searchTableViewCell.swift */; };
+		E81477E125B7BEB0000E6ACD /* searchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E81477DF25B7BEB0000E6ACD /* searchTableViewCell.xib */; };
+		E81477E525B7BF5F000E6ACD /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81477E425B7BF5F000E6ACD /* SearchAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +51,13 @@
 		469002F725B337F100039821 /* QiitaWebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QiitaWebView.storyboard; sourceTree = "<group>"; };
 		5EDB8168CAFD805972D739C4 /* Pods-QiitaClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiitaClient.release.xcconfig"; path = "Target Support Files/Pods-QiitaClient/Pods-QiitaClient.release.xcconfig"; sourceTree = "<group>"; };
 		8825197C8AADB7AC8F6F53B4 /* Pods_QiitaClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QiitaClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E81477C525B7BC5F000E6ACD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		E81477C925B7BC71000E6ACD /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		E81477D625B7BE56000E6ACD /* searchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchModel.swift; sourceTree = "<group>"; };
+		E81477D925B7BE6A000E6ACD /* searchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchViewModel.swift; sourceTree = "<group>"; };
+		E81477DE25B7BEB0000E6ACD /* searchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchTableViewCell.swift; sourceTree = "<group>"; };
+		E81477DF25B7BEB0000E6ACD /* searchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = searchTableViewCell.xib; sourceTree = "<group>"; };
+		E81477E425B7BF5F000E6ACD /* SearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +96,7 @@
 				469002BD25B2A06E00039821 /* App */,
 				469002AB25B293F300039821 /* List */,
 				469002F225B3378500039821 /* WebView */,
+				E81477C425B7BBFF000E6ACD /* Search */,
 				4690029625B28DCA00039821 /* Assets.xcassets */,
 				4690029825B28DCA00039821 /* LaunchScreen.storyboard */,
 				4690029B25B28DCA00039821 /* Info.plist */,
@@ -147,6 +162,28 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E81477C425B7BBFF000E6ACD /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				E81477DD25B7BE97000E6ACD /* Cell */,
+				E81477C525B7BC5F000E6ACD /* SearchViewController.swift */,
+				E81477C925B7BC71000E6ACD /* Search.storyboard */,
+				E81477D925B7BE6A000E6ACD /* searchViewModel.swift */,
+				E81477D625B7BE56000E6ACD /* searchModel.swift */,
+				E81477E425B7BF5F000E6ACD /* SearchAPI.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		E81477DD25B7BE97000E6ACD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E81477DE25B7BEB0000E6ACD /* searchTableViewCell.swift */,
+				E81477DF25B7BEB0000E6ACD /* searchTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -208,8 +245,10 @@
 			files = (
 				4690029A25B28DCA00039821 /* LaunchScreen.storyboard in Resources */,
 				4690029725B28DCA00039821 /* Assets.xcassets in Resources */,
+				E81477E125B7BEB0000E6ACD /* searchTableViewCell.xib in Resources */,
 				469002F825B337F100039821 /* QiitaWebView.storyboard in Resources */,
 				469002B125B295CF00039821 /* QiitaListTableViewCell.xib in Resources */,
+				E81477CA25B7BC71000E6ACD /* Search.storyboard in Resources */,
 				4690029525B28DC800039821 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,10 +302,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E81477C625B7BC5F000E6ACD /* SearchViewController.swift in Sources */,
 				465B0EDD25B4082F00539597 /* QiitaAPI.swift in Sources */,
 				4690029225B28DC800039821 /* QiitaListViewController.swift in Sources */,
+				E81477E025B7BEB0000E6ACD /* searchTableViewCell.swift in Sources */,
 				4690028E25B28DC800039821 /* AppDelegate.swift in Sources */,
 				469002B025B295CF00039821 /* QiitaListTableViewCell.swift in Sources */,
+				E81477D725B7BE56000E6ACD /* searchModel.swift in Sources */,
+				E81477DA25B7BE6A000E6ACD /* searchViewModel.swift in Sources */,
+				E81477E525B7BF5F000E6ACD /* SearchAPI.swift in Sources */,
 				4690029025B28DC800039821 /* SceneDelegate.swift in Sources */,
 				469002BB25B2965100039821 /* QiitaModel.swift in Sources */,
 				469002B825B2964100039821 /* QiitaViewModel.swift in Sources */,
