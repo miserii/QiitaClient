@@ -40,7 +40,7 @@ final class QiitaViewModel:  QiitaViewModelInput, QiitaViewModelOutput {
 
         _qiitaArticleObserver
             .flatMapLatest({ (completion) -> Observable<[QiitaModel]> in
-                QiitaAPI.shared.rx.fetchArticle
+                QiitaAPI.rx.fetchArticle
             })
             .map { [weak self] (models) -> Void in
                 //最後に得たデータを保存

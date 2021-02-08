@@ -9,11 +9,8 @@ import Foundation
 import RxSwift
 
 final class QiitaAPI {
-    static let shared = QiitaAPI()
 
-    private init() {}
-
-    func fetchArticle(success: @escaping ([QiitaModel]) -> Void) {
+    static func fetchArticle(success: @escaping ([QiitaModel]) -> Void) {
         let url = "https://qiita.com/api/v2/items"
         guard var urlComponents = URLComponents(string: url) else { return }
 
@@ -37,9 +34,9 @@ final class QiitaAPI {
 //QiitaAPIクラスのfunctionをRx対応させる
 extension QiitaAPI: ReactiveCompatible {}
 extension Reactive where Base: QiitaAPI {
-    var fetchArticle: Observable<[QiitaModel]> {
+    static var fetchArticle: Observable<[QiitaModel]> {
         return Observable.create { observer in
-            QiitaAPI.shared.fetchArticle(success: { (models) in
+            QiitaAPI.fetchArticle(success: { (models) in
                 //            succesだったらmodelsに入れて購読させる多分
                 observer.on(.next(models))
             })
